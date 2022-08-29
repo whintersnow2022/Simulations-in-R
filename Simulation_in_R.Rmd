@@ -1,0 +1,117 @@
+---
+title: "STAT 4280: Introduction to Data Science"
+author: "Shane La Rosa"
+date: "10/3/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Simulations in R
+
+From the introductory statistics, we know that the sampling distribution of a sample mean will be approximately normal with the mean $\mu$ and standard deviation error $\frac{\sigma}{\sqrt n }$ if we have a random sample from a population with mean $\mu$ and standard deviation $\sigma$ and the sample size is "large" (usually at least 30). In this problem, we will build a simulation that will show when the sample size is large enough.
+
+```{r  object,echo=TRUE}
+# Generate N = 500 samples of size n=50 from a Uniform [-5,5] distribution. 
+
+mean_unif <- c(1:500)
+set.seed(75546)
+for (j in mean_unif) {
+      x <- runif(50,-5,5)
+      mean_unif[j] <- mean(x) 
+}
+
+# For each of the N=500 samples, calculate the sample mean, so that you now have a vector of 500 sample means.
+mean(mean_unif)
+
+```
+
+
+```{r toothlength, echo=FALSE}
+# Plot a histogram of these 500 sample means.
+hist(mean_unif, main = NULL, xlab = "Sample Means (n = 50)")
+```
+
+
+
+The histogram above shows normally distributed and almost centered at 0 since the mean is 0.009. So, to further understand the sampling distribution of sample mean. Let's try to run the simulation again with the same parameter for n = 10, 15, 30, 50. Here's the results:
+
+
+
+## Sample Means
+
+
+**n = 10**
+```{r mean,echo=FALSE}
+
+mean_unif1 <- c(1:500)
+set.seed(75546)
+
+for (k in mean_unif1) {
+      y <- runif(10,-5,5)
+      mean_unif1[k] <- mean(y) 
+   
+}
+
+mean(mean_unif1)
+
+```
+
+**n = 15**
+```{r r,echo=FALSE}
+
+mean_unif2 <- c(1:500)
+set.seed(75546)
+for (l in mean_unif2) {
+      z <- runif(15,-5,5)
+      mean_unif2[l] <- mean(z) 
+}
+
+mean(mean_unif2)
+
+```
+
+**n = 30**
+```{r r r, echo=FALSE}
+
+mean_unif3 <- c(1:500)
+set.seed(75546)
+for (m in mean_unif3) {
+      a <- runif(30,-5,5)
+      mean_unif3[m] <- mean(a) 
+}
+
+mean(mean_unif3)
+
+```
+
+**n = 50**
+```{r r r r,echo=FALSE}
+
+mean_unif4 <- c(1:500)
+set.seed(75546)
+for (n in mean_unif4) {
+      b <- runif(50,-5,5)
+      mean_unif4[n] <- mean(b) 
+}
+
+mean(mean_unif4)
+
+```
+
+
+## Histogram of Sample Means
+```{r r r r r, echo=FALSE}
+par(mfrow = c (2,2))
+hist(mean_unif1, main = NULL, xlab = "Sample Means (n=10)")
+hist(mean_unif2, main = NULL, xlab = "Sample Means (n=15)")
+hist(mean_unif3, main = NULL, xlab = "Sample Means (n=30)")
+hist(mean_unif4, main = NULL, xlab = "Sample Means (n=50)")
+```
+
+When comparing the sample means of the four sample sizes *(n = 10, n = 15, n = 30, n = 50)*, we notice that the center or mean doesn't affect the sample size. However, the distribution of value varies when the sample size is smaller or larger. In short, as the sample size decreases, the distribution spreads wider from the mean than when the sample size increases. Thus, the histogram will look normally distributed when the sample size is larger.
+
+
+

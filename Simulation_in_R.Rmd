@@ -2,7 +2,7 @@
 title: "STAT 4280: Introduction to Data Science"
 author: "Shane La Rosa"
 date: "10/3/2021"
-output: html_document
+output: rmarkdown::github_document
 ---
 
 ```{r setup, include=FALSE}
